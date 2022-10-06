@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { dataFetched } from './actions/actions';
+import { formatNumber } from './utils/formatNumber';
 
 import Card from './components/Card/Card';
 import Info from './components/Info/Info';
@@ -19,9 +20,9 @@ function App() {
         .then (response => response.json())
         .then (data => {
           return ({
-            usd: data.bpi.USD.rate,
-            gbp: data.bpi.GBP.rate,
-            eur: data.bpi.EUR.rate,
+            usd: formatNumber(data.bpi.USD.rate_float),
+            gbp: formatNumber(data.bpi.GBP.rate_float),
+            eur: formatNumber(data.bpi.EUR.rate_float),
           })
         })
         .then (data => dispatch(dataFetched(data)));
