@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { dataFetched } from './actions/actions';
 import { formatNumber } from './utils/formatNumber';
+import { formatDateTime } from './utils/formatDateTime';
 
 import Card from './components/Card/Card';
 import Info from './components/Info/Info';
@@ -23,7 +24,7 @@ function App() {
             usd: formatNumber(data.bpi.USD.rate_float),
             gbp: formatNumber(data.bpi.GBP.rate_float),
             eur: formatNumber(data.bpi.EUR.rate_float),
-            time: data.time.updated
+            time: formatDateTime(data.time.updatedISO)
           })
         })
         .then (data => dispatch(dataFetched(data)));
