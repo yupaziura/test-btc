@@ -6,6 +6,8 @@ import { dataFetched } from './actions/actions';
 import Card from './components/Card/Card';
 import Info from './components/Info/Info';
 
+import './App.css';
+
 
 function App() {
   const {usd, eur, gbp} = useSelector(state => state);
@@ -26,17 +28,19 @@ function App() {
 
     useEffect(() => {
       getData();
-      setInterval(()=> {
-        getData()
-      }, 20000)
+      // setInterval(()=> {
+      //   getData()
+      // }, 20000)
     }, [])
 
 
   return (
     <div className="App">
-      {usd}
-      {eur}
-      {gbp}
+      <Card>
+        <Info title={'GBP'} value ={gbp}/>
+        <Info title={'USD'} value ={usd}/>
+        <Info title={'EUR'} value ={eur}/>
+      </Card>
     </div>
   );
 }
