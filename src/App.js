@@ -5,6 +5,7 @@ import { dataFetched } from './actions/actions';
 
 import Card from './components/Card/Card';
 import Info from './components/Info/Info';
+import Title from './components/Title/Title';
 
 import './App.css';
 
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <div className="App">
+      <Title/>
       <Card>
         <Info title={'GBP'} value ={gbp}/>
         <Info title={'USD'} value ={usd}/>
