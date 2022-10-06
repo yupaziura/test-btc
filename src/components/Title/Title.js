@@ -1,12 +1,16 @@
 import './Title.scss';
 
-const Title = () => {
+const Title = (props) => {
     return (
-        <>
-            <h1 className='title'>
+        <div  className='title'>
+            <h1>
                 Bitcoin price
             </h1>
-        </>
+
+            <h2>
+                {`Updated: ${props.time}`}
+            </h2>
+        </div>
     )
 }
 

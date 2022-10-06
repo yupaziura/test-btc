@@ -12,7 +12,7 @@ import './App.css';
 
 
 function App() {
-  const {usd, eur, gbp} = useSelector(state => state);
+  const {usd, eur, gbp, time} = useSelector(state => state);
     const dispatch = useDispatch();
 
     const getData = () => {
@@ -23,6 +23,7 @@ function App() {
             usd: formatNumber(data.bpi.USD.rate_float),
             gbp: formatNumber(data.bpi.GBP.rate_float),
             eur: formatNumber(data.bpi.EUR.rate_float),
+            time: data.time.updated
           })
         })
         .then (data => dispatch(dataFetched(data)));
@@ -30,15 +31,15 @@ function App() {
 
     useEffect(() => {
       getData();
-      // setInterval(()=> {
-      //   getData()
-      // }, 20000)
+      setInterval(()=> {
+        getData()
+      }, 30000)
     }, [])
 
 
   return (
     <div className="App">
-      <Title/>
+      <Title time={time}/>
       <Card>
         <Info title={'GBP'} value ={gbp}/>
         <Info title={'USD'} value ={usd}/>

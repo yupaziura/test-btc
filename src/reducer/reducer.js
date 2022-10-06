@@ -2,6 +2,7 @@ const initState = {
     usd: 0,
     gbp: 0,
     eur: 0,
+    time: null
 };
 
 const reducer = (state = initState, action) => {
@@ -11,7 +12,8 @@ const reducer = (state = initState, action) => {
             ...state,
             usd: action.payload.usd,
             gbp: action.payload.gbp,
-            eur: action.payload.eur
+            eur: action.payload.eur,
+            time: action.payload.time
            } 
         default:
             return {...state}
